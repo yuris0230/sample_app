@@ -33,6 +33,12 @@ class ListsController < ApplicationController
     redirect_to list_path(list.id)
   end
 
+  def destroy
+    list = List.find(params[:id]) #find data from id
+    list.destroy        #delete record
+    redirect_to '/lists' #return to list
+  end
+
   private
   # ストロングパラメータ permit(:allow only these colum ONLY) 
   def list_params
