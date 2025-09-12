@@ -23,11 +23,6 @@ class ListsController < ApplicationController
     redirect_to list_path(list.id)
   end
 
-  private
-  def list_params
-    params.require(:list).permit(:title, :body)
-  end
-
   # 以下を追加
   def create
     # １.&2. データを受け取り新規登録するためのインスタンス作成
@@ -41,6 +36,7 @@ class ListsController < ApplicationController
   private
   # ストロングパラメータ permit(:allow only these colum ONLY) 
   def list_params
-    params.require(:list).permit(:title, :body)
+    params.require(:list).permit(:title, :body, :image)
   end
+
 end
