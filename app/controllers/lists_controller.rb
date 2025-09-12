@@ -8,6 +8,10 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+  def show
+    @list = List.find(params[:id])
+  end
+
   # 以下を追加
   def create
     # １.&2. データを受け取り新規登録するためのインスタンス作成
@@ -15,7 +19,7 @@ class ListsController < ApplicationController
     # 3. データをデータベースに保存するためのsaveメソッド実行
     list.save
     # 4. トップ画面へリダイレクト
-    redirect_to '/top'
+    redirect_to list_path(list.id)
   end
 
   private
