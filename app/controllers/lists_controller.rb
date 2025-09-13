@@ -36,6 +36,7 @@ class ListsController < ApplicationController
       redirect_to list_path(@list.id) # if true -> list id
     else
       render :new # if false -> same form and need to do again
+      # redirect_to new_list_path -> this is for redirect
     end
   end
 
