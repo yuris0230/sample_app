@@ -33,8 +33,10 @@ class ListsController < ApplicationController
     # redirect_to list_path(list.id)
     @list = List.new(list_params)
     if @list.save
+      flash[:notice] = "投稿に成功しました。" # flash message
       redirect_to list_path(@list.id) # if true -> list id
     else
+      flash.now[:alert] = "投稿失敗しました。"
       render :new # if false -> same form and need to do again
       # redirect_to new_list_path -> this is for redirect
     end
